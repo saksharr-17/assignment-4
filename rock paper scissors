@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    char userchoice, computerchoice;
+    int randomnumber;
+    srand(time(NULL));
+
+    printf("Enter your choice (R/P/S): ");
+    scanf("%c", &userchoice);
+
+    randomnumber = rand() % 100;
+    if (randomnumber < 33) {
+        computerchoice = 'R';
+    } else if (randomnumber < 66) {
+        computerchoice = 'P';
+    } else {
+        computerchoice = 'S';
+    }
+
+    if (userchoice == computerchoice) {
+        printf("It's a tie!\n");
+    } else if ((userchoice == 'R' && computerchoice == 'S') ||
+               (userchoice == 'P' && computerchoice == 'R') ||
+               (userchoice == 'S' && computerchoice == 'P')) {
+        printf("You win!\n");
+    } else {
+        printf("Computer wins!\n");
+    }
+
+    printf("You chose: %c\n", userchoice);
+    printf("Computer chose: %c\n", computerchoice);
+
+    return 0;
+}
